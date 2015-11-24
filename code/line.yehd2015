@@ -1,0 +1,89 @@
+let arrayP = new Uint8Array( array );
+
+let time = +new Date() * 0.001;
+
+let lineColor = {
+  r: 47,
+  g: 194,
+  b: 84
+};
+
+function isBlack( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === 0 &&
+    arrayP[ _i * 4 + 1 ] === 0 &&
+    arrayP[ _i * 4 + 2 ] === 0
+  );
+}
+
+function isLine( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === lineColor.r &&
+    arrayP[ _i * 4 + 1 ] === lineColor.g &&
+    arrayP[ _i * 4 + 2 ] === lineColor.b
+  );
+}
+
+for ( let i = 0; i < 64 * 64; i ++ ) {
+  if ( arrayP[ 0 ] % 2 === 0 ) {
+    let ix = i % 64;
+    let iy = Math.floor( i / 64 );
+    if ( isBlack( i ) ) {
+      let angle = Math.atan2( iy - 31.5, ix - 31.5 );
+      let px = Math.floor( ix - Math.cos( angle ) + 0.5 );
+      let py = Math.floor( iy - Math.sin( angle ) + 0.5 );
+      if ( arrayP[ 0 ] === 0 ) {
+        if( !isBlack( px + py * 64 ) ) {
+          array[ i * 4 + 0 ] = lineColor.r;
+          array[ i * 4 + 1 ] = lineColor.g;
+          array[ i * 4 + 2 ] = lineColor.b;
+        }
+      } else {
+        if( isLine( px + py * 64 ) ) {
+          array[ i * 4 + 0 ] = lineColor.r;
+          array[ i * 4 + 1 ] = lineColor.g;
+          array[ i * 4 + 2 ] = lineColor.b;
+        }
+      }
+    }
+    if ( isLine( i ) ) {
+      array[ i * 4 + 0 ] = 0;
+      array[ i * 4 + 1 ] = 0;
+      array[ i * 4 + 2 ] = 0;
+    }
+  }
+}
+
+array[ 0 ] = ( arrayP[ 0 ] + 1 ) % 12;
+
+// ------
+
+let sinArray = [
+  '      #####                     ',
+  '    ##     ##                   ',
+  '   #         #                  ',
+  '  #           #                 ',
+  ' #             #                ',
+  '#               #               ',
+  '                 #             #',
+  '                  #           # ',
+  '                   #         #  ',
+  '                    ##     ##   ',
+  '                      #####     ',
+];
+
+clear();
+
+let sinIndex = Math.floor( +new Date() * 0.01 ) % 32;
+print( '======================================' );
+print( '==                                  ==' );
+for ( let i = 0; i < 11; i ++ ) {
+  print(
+    '== ' +
+    sinArray[ i ].substring( sinIndex ) +
+    sinArray[ i ].substring( 0, sinIndex ) +
+    ' =='
+  );
+}
+print( '==                                  ==' );
+print( '======================================' );

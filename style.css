@@ -1,0 +1,330 @@
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  background: #222;
+  color: #ddd;
+  font: 500 14px/1.0 "Helvetica Neue", "ヒラギノ角ゴ ProN", sans-serif;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+.row {
+  position: relative;
+}
+
+.row .row-right {
+  position: absolute;
+  left: 20%;
+  top: 0;
+}
+
+#header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc( 100% - 16px );
+  height: 40px;
+  padding: 4px 8px;
+
+  background: #ddd;
+  color: #222;
+  font-size: 20px;
+}
+
+#header .small {
+  margin-top: -12px;
+  color: #555;
+  font-size: 14px;
+}
+
+#header .right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: calc( 100% - 16px );
+  height: calc( 100% - 8px );
+  padding: 4px 8px;
+  text-align: right;
+}
+
+#header-about {
+  display: inline-block;
+  padding: 8px;
+  height: 16px;
+
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#header-about:hover {
+  color: #da2;
+}
+
+#about-div {
+  position: absolute;
+  left: 0;
+  top: 48px;
+  width: 100%;
+  height: calc( 100% - 48px );
+  z-index: 20;
+  display: none;
+}
+
+#about {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: calc( 100% - 80px );
+  height: calc( 100% - 80px );
+  z-index: 21;
+  overflow: scroll;
+
+  background: #222;
+  border: 4px solid #bbb;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+#about .article {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  line-height: 1.4;
+}
+
+#about-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+
+  background: #000;
+  opacity: 0.5;
+}
+
+#dev-div {
+  position: absolute;
+  left: 0;
+  top: 48px;
+  width: 50%;
+  height: calc( 100% - 48px );
+}
+
+@media ( max-width: 1000px ) {
+  #dev-div {
+    width: 100%;
+  }
+}
+
+#bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: calc( 100% - 16px );
+  height: 32px;
+  padding: 8px;
+
+  background: #333;
+}
+
+#bar .button {
+  width: 32px;
+  height: 32px;
+
+  cursor: pointer;
+}
+
+#bar .pad {
+  display: inline-block;
+  width: 2px;
+  height: 32px;
+  margin: 0px 8px;
+
+  background: #666;
+}
+
+#bar .image-select {
+  width: 32px;
+  height: 32px;
+
+  border-radius: 2px;
+}
+
+#bar .code-select {
+  position: relative;
+  width: 96px;
+  height: 28px;
+
+  border-radius: 2px;
+}
+
+#bar .code-select-text {
+  position: absolute;
+  margin: 4px;
+  font-size: 16px;
+}
+
+#bar #code-selects-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 0px;
+  width: 96px;
+  height: 24px;
+  background: #555;
+
+  border-radius: 2px;
+}
+
+#editor-div {
+  position: absolute;
+  left: 0;
+  top: 48px;
+  width: 100%;
+  height: calc( ( 100% - 48px ) * 0.8 );
+}
+
+#editor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#log-border {
+  position: absolute;
+  left: 0px;
+  top: calc( 48px + ( 100% - 48px ) * 0.8 - 2px );
+  width: 100%;
+  height: 4px;
+  z-index: 10;
+
+  background: #444;
+}
+
+#log {
+  position: absolute;
+  left: 0;
+  top: calc( 48px + ( 100% - 48px ) * 0.8 );
+  width: calc( 100% - 16px );
+  height: calc( ( 100% - 48px ) * 0.2 - 16px );
+  padding: 8px;
+  overflow: scroll;
+
+  font-family: Monaco, Menlo, 'Ubuntu Mono', Consolas, source-code-pro, monospace;
+  font-size: 12px;
+  white-space: pre;
+  cursor: text;
+
+  background: #000;
+}
+
+#log .eval-error {
+  color: #f60;
+}
+
+#log .run-error {
+  color: #f06;
+}
+
+#preview-div {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 48px;
+  width: 50%;
+  height: calc( 100% - 48px );
+  overflow: hidden;
+}
+
+@media ( max-width: 1000px ) {
+  #preview-div {
+    display: none;
+  }
+}
+
+#preview {
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: calc( 100% - 64px );
+  height: calc( 100% - 64px );
+
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
+
+#preview-small {
+  display: none;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 64px;
+  height: 64px;
+  z-index: 10;
+
+  cursor: pointer;
+
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: pixelated;
+}
+
+@media ( max-width: 1000px ) {
+  #preview-small {
+    display: block;
+  }
+}
+
+#preview-small-leaver {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+
+  background: #000;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+#canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#preview-border {
+  display: block;
+  position: absolute;
+  left: calc( 50% - 2px );
+  top: 48px;
+  width: 4px;
+  height: calc( 100% - 48px );
+  z-index: 10;
+
+  background: #444;
+}
+
+@media ( max-width: 1000px ) {
+  #preview-border {
+    display: none;
+  }
+}

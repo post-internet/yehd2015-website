@@ -1,0 +1,71 @@
+let arrayP = new Uint8Array( array );
+
+let time = +new Date() * 0.001;
+
+function isBlack( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === 0 &&
+    arrayP[ _i * 4 + 1 ] === 0 &&
+    arrayP[ _i * 4 + 2 ] === 0
+  );
+}
+
+if ( array[ 3 ] === 255 ) {
+
+  for ( let iy = 0; iy < 64; iy ++ ) {
+    for ( let ix = 0; ix < 64; ix ++ ) {
+
+      let i = ix + iy * 64;
+      let count = 0;
+      let sum = {
+        r: 0,
+        g: 0,
+        b: 0
+      }
+
+      for ( let jy = -1; jy < 2; jy ++ ) {
+        for ( let jx = -1; jx < 2; jx ++ ) {
+
+          if ( !( jx === 0 && jy === 0 ) ) {
+            let j = ( ix + jx + 64 ) % 64 + ( ( iy + jy + 64 ) % 64 ) * 64;
+
+            if ( !isBlack( j ) ) {
+              count ++;
+              sum.r += arrayP[ j * 4 + 0 ];
+              sum.g += arrayP[ j * 4 + 1 ];
+              sum.b += arrayP[ j * 4 + 2 ];
+            }
+          }
+
+        }
+      }
+
+      if ( count <= 1 || 4 <= count ) {
+        array[ i * 4 + 0 ] = 0;
+        array[ i * 4 + 1 ] = 0;
+        array[ i * 4 + 2 ] = 0;
+      } else if ( count === 3 ) {
+        array[ i * 4 + 0 ] = sum.r / count;
+        array[ i * 4 + 1 ] = sum.g / count;
+        array[ i * 4 + 2 ] = sum.b / count;
+      }
+
+    }
+  }
+
+}
+
+array[ 3 ] = 255 - ( ( 256 - arrayP[ 3 ] ) % 6 );
+
+clear();
+
+let str = 'The Game of Life';
+str = str.split( '' ).map( function( _char ) {
+  let dice = Math.random();
+  if ( dice < 0.5 ) {
+    return _char.toUpperCase();
+  } else {
+    return _char.toLowerCase();
+  }
+} ).join( '' );
+print( str );

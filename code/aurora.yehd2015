@@ -1,0 +1,68 @@
+let arrayP = new Uint8Array( array );
+
+let auraColor = {
+  r: 147,
+  g: 44,
+  b: 74
+};
+
+let time = +new Date() * 0.001;
+
+function isAurora( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === auraColor.r &&
+    arrayP[ _i * 4 + 1 ] === auraColor.g &&
+    arrayP[ _i * 4 + 2 ] === auraColor.b
+  );
+}
+
+function isBlack( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === 0 &&
+    arrayP[ _i * 4 + 1 ] === 0 &&
+    arrayP[ _i * 4 + 2 ] === 0
+  );
+}
+
+for ( let i = 0; i < 64 * 64; i ++ ) {
+  let ai = isAurora( i );
+  let bi = isBlack( i );
+  if ( !ai && !bi ) {
+    continue;
+  }
+
+  let test = false;
+  for ( let jy = -1; jy < 2; jy ++ ) {
+    for ( let jx = -1; jx < 2; jx ++ ) {
+      let px = ( i % 64 ) + jx;
+      let py = Math.floor( i / 64 ) + jy;
+
+      if (
+        ( jx === 0 && jy === 0 ) ||
+        px < 0 || 64 <= px || py < 0 || 64 <= py
+      ) { continue; }
+
+      let j = i + jx + jy * 64;
+      let aj = isAurora( j );
+      let bj = isBlack( j );
+
+      if (
+        ( aj && Math.random() < 0.15 && jy !== -1 ) ||
+        ( !aj && !bj )
+      ) {
+        test = true;
+        break;
+      }
+    }
+  }
+
+  if ( test ) {
+    array[ i * 4 + 0 ] = auraColor.r;
+    array[ i * 4 + 1 ] = auraColor.g;
+    array[ i * 4 + 2 ] = auraColor.b;
+  } else {
+    array[ i * 4 + 0 ] = 0;
+    array[ i * 4 + 1 ] = 0;
+    array[ i * 4 + 2 ] = 0;
+  }
+}

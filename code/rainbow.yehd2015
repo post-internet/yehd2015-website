@@ -1,0 +1,36 @@
+let arrayP = new Uint8Array( array );
+
+let time = +new Date() * 0.001;
+
+function isBlack( _i ) {
+  return (
+    arrayP[ _i * 4 + 0 ] === 0 &&
+    arrayP[ _i * 4 + 1 ] === 0 &&
+    arrayP[ _i * 4 + 2 ] === 0
+  );
+}
+
+for ( let i = 0; i < 64 * 64; i ++ ) {
+  if ( isBlack( i ) ) {
+    array[ i * 4 + 3 ] = 254;
+  }
+  if ( arrayP[ i * 4 + 3 ] === 254 ) {
+    let x = Math.floor( ( i % 64 ) / 4 ) - 7.5;
+    let y = Math.floor( Math.floor( i / 64 ) / 4 ) - 7.5;
+    let length = Math.sqrt( x * x + y * y );
+    let phase = time * 2.0 - length * 0.1;
+
+    array[ i * 4 + 0 ] = 127.5 + 127.5 * Math.sin( phase );
+    array[ i * 4 + 1 ] = 127.5 + 127.5 * Math.sin( phase + Math.PI / 3.0 * 4.0 );
+    array[ i * 4 + 2 ] = 127.5 + 127.5 * Math.sin( phase + Math.PI / 3.0 * 2.0 );
+  }
+}
+
+clear();
+print( '==============================' );
+print( '== Year End\'s Hack Day 2015 ==' );
+print( '==     2015-12-20 @ TBA     ==' );
+print( '==         Hack it!!        ==' );
+print( '==============================' );
+print( '' );
+print( '# Sorry, there are no flag in this page...' );

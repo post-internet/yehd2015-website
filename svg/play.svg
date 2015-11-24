@@ -1,0 +1,17 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 100 100"
+  width="256"
+  height="256"
+  font-family="Helvetica Neue"
+  font-weight="300"
+>
+  <circle cx="50" cy="50" r="50" fill="#da2" />
+  <path fill="#222" stroke="#222" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" d="
+    M 35 70
+    l 40 -20
+    l -40 -20
+    l 0 40
+    z
+  " />
+</svg>

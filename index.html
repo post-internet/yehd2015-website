@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<title>Year End's HackDay 2015</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	</head>
+	<body>
+
+    <div id="container">
+
+			<div id="header">
+				Year End's Hack Day 2015<br />
+				<span class="small">2015-12-20 @ TBA</span>
+				<div class="right">
+					<div id="header-about">
+						About
+					</div>
+				</div>
+			</div>
+
+			<div id="about-div">
+				<div id="about">
+					<div class="article">
+						<h1 class="center">Year End's Hack Day !!</h1>
+						今年もYEHDの季節がやってまいりました．CTFとか競プロとかをやって暑い夏を乗り切ろう<br />
+						<br />
+						<div class="center">記</div>
+						<br />
+						<div class="row">日時<div class="row-right">2015年12月20日</div></div>
+						<div class="row">場所<div class="row-right">未定</div></div>
+						<div class="row">参加費<div class="row-right">未定</div></div>
+						<div class="row">持参物<div class="row-right">パソコン・充電器</div></div>
+						<div class="row">注意事項<div class="row-right">動きやすい服装でお越しください</div></div>
+						<br />
+						<div class="right">以上</div>
+					</div>
+				</div>
+				<div id="about-bg"></div>
+			</div>
+
+			<div id="dev-div">
+
+				<div id="bar">
+					<img class="button" id="button-play" src="svg/play.svg" />
+					<img class="button" id="button-pause" src="svg/pause.svg" />
+					<img class="button" id="button-log" src="svg/log.svg" />
+
+					<div class="pad"></div>
+
+					<span id="image-selects">
+						<img class="image-select" alt="vhs" src="img/vhs.png" />
+						<img class="image-select" alt="script" src="img/script.png" />
+						<img class="image-select" alt="block" src="img/block.png" />
+						<img class="image-select" alt="graffiti" src="img/graffiti.png" />
+					</span>
+
+					<div class="pad"></div>
+
+					<span id="code-selects-container">
+						<span id="code-selects">
+							<div class="code-select"><span class="code-select-text">rainbow</span></div>
+							<div class="code-select"><span class="code-select-text">aurora</span></div>
+							<div class="code-select"><span class="code-select-text">line</span></div>
+							<div class="code-select"><span class="code-select-text">conway</span></div>
+						</span>
+					</span>
+				</div>
+
+				<div id="editor-div">
+					<div id="editor"></div>
+					<div id="preview-small"></div>
+					<div id="preview-small-leaver"></div>
+				</div>
+
+				<div id="log"></div>
+				<div id="log-border"></div>
+
+			</div>
+
+			<div id="preview-div">
+				<div id="preview">
+				</div>
+			</div>
+
+			<div id="preview-border"></div>
+
+		</div>
+
+		<script src="lib/ace/ace.js"></script>
+    <script src="bundle.js"></script>
+	</body>
+</html>
