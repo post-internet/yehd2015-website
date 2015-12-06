@@ -24,6 +24,7 @@
       aboutDiv.style.display = 'none';
     }
   }
+  toggleAbout();
 
   headerAbout.addEventListener( 'click', function() { toggleAbout() } );
   aboutBg.addEventListener( 'click', function() { toggleAbout( false ) } );

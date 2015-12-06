@@ -210,6 +210,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       aboutDiv.style.display = 'none';
     }
   };
+  toggleAbout();
 
   headerAbout.addEventListener('click', function () {
     toggleAbout();

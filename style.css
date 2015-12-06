@@ -16,14 +16,9 @@ body {
   text-align: right;
 }
 
-.row {
-  position: relative;
-}
-
-.row .row-right {
-  position: absolute;
-  left: 20%;
-  top: 0;
+td {
+  vertical-align: top;
+  padding: 4px;
 }
 
 #header {
