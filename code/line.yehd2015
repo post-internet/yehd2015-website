@@ -1,8 +1,8 @@
-let arrayP = new Uint8Array( array );
+var arrayP = new Uint8Array( array );
 
-let time = +new Date() * 0.001;
+var time = +new Date() * 0.001;
 
-let lineColor = {
+var lineColor = {
   r: 47,
   g: 194,
   b: 84
@@ -24,14 +24,14 @@ function isLine( _i ) {
   );
 }
 
-for ( let i = 0; i < 64 * 64; i ++ ) {
+for ( var i = 0; i < 64 * 64; i ++ ) {
   if ( arrayP[ 0 ] % 2 === 0 ) {
-    let ix = i % 64;
-    let iy = Math.floor( i / 64 );
+    var ix = i % 64;
+    var iy = Math.floor( i / 64 );
     if ( isBlack( i ) ) {
-      let angle = Math.atan2( iy - 31.5, ix - 31.5 );
-      let px = Math.floor( ix - Math.cos( angle ) + 0.5 );
-      let py = Math.floor( iy - Math.sin( angle ) + 0.5 );
+      var angle = Math.atan2( iy - 31.5, ix - 31.5 );
+      var px = Math.floor( ix - Math.cos( angle ) + 0.5 );
+      var py = Math.floor( iy - Math.sin( angle ) + 0.5 );
       if ( arrayP[ 0 ] === 0 ) {
         if( !isBlack( px + py * 64 ) ) {
           array[ i * 4 + 0 ] = lineColor.r;
@@ -58,7 +58,7 @@ array[ 0 ] = ( arrayP[ 0 ] + 1 ) % 12;
 
 // ------
 
-let sinArray = [
+var sinArray = [
   '      #####                     ',
   '    ##     ##                   ',
   '   #         #                  ',
@@ -74,10 +74,10 @@ let sinArray = [
 
 clear();
 
-let sinIndex = Math.floor( +new Date() * 0.01 ) % 32;
+var sinIndex = Math.floor( +new Date() * 0.01 ) % 32;
 print( '======================================' );
 print( '==                                  ==' );
-for ( let i = 0; i < 11; i ++ ) {
+for ( var i = 0; i < 11; i ++ ) {
   print(
     '== ' +
     sinArray[ i ].substring( sinIndex ) +

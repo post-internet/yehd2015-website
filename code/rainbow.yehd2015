@@ -1,6 +1,6 @@
-let arrayP = new Uint8Array( array );
+var arrayP = new Uint8Array( array );
 
-let time = +new Date() * 0.001;
+var time = +new Date() * 0.001;
 
 function isBlack( _i ) {
   return (
@@ -10,15 +10,15 @@ function isBlack( _i ) {
   );
 }
 
-for ( let i = 0; i < 64 * 64; i ++ ) {
+for ( var i = 0; i < 64 * 64; i ++ ) {
   if ( isBlack( i ) ) {
     array[ i * 4 + 3 ] = 254;
   }
   if ( arrayP[ i * 4 + 3 ] === 254 ) {
-    let x = Math.floor( ( i % 64 ) / 4 ) - 7.5;
-    let y = Math.floor( Math.floor( i / 64 ) / 4 ) - 7.5;
-    let length = Math.sqrt( x * x + y * y );
-    let phase = time * 2.0 - length * 0.1;
+    var x = Math.floor( ( i % 64 ) / 4 ) - 7.5;
+    var y = Math.floor( Math.floor( i / 64 ) / 4 ) - 7.5;
+    var length = Math.sqrt( x * x + y * y );
+    var phase = time * 2.0 - length * 0.1;
 
     array[ i * 4 + 0 ] = 127.5 + 127.5 * Math.sin( phase );
     array[ i * 4 + 1 ] = 127.5 + 127.5 * Math.sin( phase + Math.PI / 3.0 * 4.0 );

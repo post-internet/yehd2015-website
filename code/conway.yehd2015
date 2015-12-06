@@ -1,6 +1,6 @@
-let arrayP = new Uint8Array( array );
+var arrayP = new Uint8Array( array );
 
-let time = +new Date() * 0.001;
+var time = +new Date() * 0.001;
 
 function isBlack( _i ) {
   return (
@@ -12,22 +12,22 @@ function isBlack( _i ) {
 
 if ( array[ 3 ] === 255 ) {
 
-  for ( let iy = 0; iy < 64; iy ++ ) {
-    for ( let ix = 0; ix < 64; ix ++ ) {
+  for ( var iy = 0; iy < 64; iy ++ ) {
+    for ( var ix = 0; ix < 64; ix ++ ) {
 
-      let i = ix + iy * 64;
-      let count = 0;
-      let sum = {
+      var i = ix + iy * 64;
+      var count = 0;
+      var sum = {
         r: 0,
         g: 0,
         b: 0
       }
 
-      for ( let jy = -1; jy < 2; jy ++ ) {
-        for ( let jx = -1; jx < 2; jx ++ ) {
+      for ( var jy = -1; jy < 2; jy ++ ) {
+        for ( var jx = -1; jx < 2; jx ++ ) {
 
           if ( !( jx === 0 && jy === 0 ) ) {
-            let j = ( ix + jx + 64 ) % 64 + ( ( iy + jy + 64 ) % 64 ) * 64;
+            var j = ( ix + jx + 64 ) % 64 + ( ( iy + jy + 64 ) % 64 ) * 64;
 
             if ( !isBlack( j ) ) {
               count ++;
@@ -59,9 +59,9 @@ array[ 3 ] = 255 - ( ( 256 - arrayP[ 3 ] ) % 6 );
 
 clear();
 
-let str = 'The Game of Life';
+var str = 'The Game of Life';
 str = str.split( '' ).map( function( _char ) {
-  let dice = Math.random();
+  var dice = Math.random();
   if ( dice < 0.5 ) {
     return _char.toUpperCase();
   } else {
