@@ -171,6 +171,7 @@
   let context = canvas.getContext( '2d' );
 
   let image = new Image();
+  let imageLoaded = false;
   let imageData = context.getImageData( 0, 0, 64, 64 );
   let error = false;
   let pause = false;
@@ -203,7 +204,9 @@
 
   let init = function( _str ) {
     log.innerHTML = '';
-    context.drawImage( image, 0, 0 );
+    if ( imageLoaded ) {
+      context.drawImage( image, 0, 0 );
+    }
     imageData = context.getImageData( 0, 0, 64, 64 );
     if ( _str ) {
       ev( _str );
@@ -261,6 +264,7 @@
     imageSelected = _name;
     image = new Image();
     image.onload = function() {
+      imageLoaded = true;
       init();
     };
     image.src = 'img/' + imageSelected + '.png';
@@ -291,7 +295,8 @@
 
   let codeSelector = new Selector( document.getElementById( 'code-selects' ) );
   codeSelector.onchange = function( _element ) {
-    loadCode( _element.innerText );
+    console.log( _element.childNodes[ 0 ] );
+    loadCode( _element.childNodes[ 0 ].innerHTML );
   };
   codeSelector.setBackground( '#222' );
 

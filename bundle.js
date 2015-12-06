@@ -361,6 +361,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   var context = canvas.getContext('2d');
 
   var image = new Image();
+  var imageLoaded = false;
   var imageData = context.getImageData(0, 0, 64, 64);
   var error = false;
   var pause = false;
@@ -393,7 +394,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   var init = function init(_str) {
     log.innerHTML = '';
-    context.drawImage(image, 0, 0);
+    if (imageLoaded) {
+      context.drawImage(image, 0, 0);
+    }
     imageData = context.getImageData(0, 0, 64, 64);
     if (_str) {
       ev(_str);
@@ -451,6 +454,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     imageSelected = _name;
     image = new Image();
     image.onload = function () {
+      imageLoaded = true;
       init();
     };
     image.src = 'img/' + imageSelected + '.png';
@@ -481,7 +485,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
   var codeSelector = new Selector(document.getElementById('code-selects'));
   codeSelector.onchange = function (_element) {
-    loadCode(_element.innerText);
+    console.log(_element.childNodes[0]);
+    loadCode(_element.childNodes[0].innerHTML);
   };
   codeSelector.setBackground('#222');
 
