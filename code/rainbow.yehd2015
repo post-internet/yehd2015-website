@@ -33,4 +33,4 @@ print( '==     2015-12-20 @ TBA     ==' );
 print( '==         Hack it!!        ==' );
 print( '==============================' );
 print( '' );
-print( '# Sorry, there are no flag in this page...' );
+print( '# Sorry, there are no flags in this page...' );
